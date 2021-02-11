@@ -1,9 +1,22 @@
-<h1>Hi <%=name%> </h1>
 
-<form action = '/admin'>
-    <button type="submit">Add Electives</button>
-</form>
+<link type="text/css" href="css/style2.css" rel="stylesheet">
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <h1>Hi <%=name%> </h1>
+        <form action = '/admin'>
+            <input type="submit" class="fadeIn second" value="Add Electives">
+        </form>
 
-<form action = '/logout?_method=DELETE' method = "POST">
-    <button type="submit">Log Out</button>
-</form>
+        <form action = '/signup'>
+            <input type="submit" class="fadeIn third" value="Signup For Electives">
+        </form>
+
+        <form action = '/logout?_method=DELETE' method = "POST">
+            <input type="submit" class="fadeIn fourth" value="Logout">
+        </form>
+
+    </div>
+</div>
+
+
+

@@ -31,10 +31,19 @@ app.use(session({
 app.use(methodOverride('_method'))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(express.static("public"));
 
 
 app.get('/', checkAuthenticated, (req, res) =>{
     res.render('index.ejs', { name: req.user.name})
+}) 
+
+app.get('/signup', checkAuthenticated, (req, res) =>{
+    res.render('signup.ejs', { name: req.user.name})
+}) 
+
+app.get('/admin', checkAuthenticated, (req, res) =>{
+    res.render('admin.ejs', { name: req.user.name})
 }) 
 
 app.get('/login', checkNotAuthenticated,(req, res)=>{
@@ -89,5 +98,27 @@ function checkNotAuthenticated(req, res, next){
     next()
 
 }
+
+function getTime(){
+    var date = new Date();
+    var year = date.getFullYear();
+        if(year < 1000){
+            year += 1900
+        }
+    var day = date.getDay();
+    var month = date.getMonth();
+    var daym = date.getDate();
+    var dayarray = new Array("Sun.","Mon.","Tue.", "Wed.","Thurs.","Fri.","Sat.");
+    var montharray = new Array("Jan.","Feb.","Mar.","Apr.","May","Jun.","Jul.","Aug.","Sep.","Oct.","Nov.","Dec.");
+
+    //time
+    var time = new Date();
+    var hour = time.getHours();
+    var min = time.getMinutes();
+    var sec = time.getSeconds();
+}
+
+
+
 
 app.listen(3000)
